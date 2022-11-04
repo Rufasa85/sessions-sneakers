@@ -8,7 +8,7 @@ router.get("/",(req,res)=>{
 
 router.get("/profile",(req,res)=>{
     if(!req.session.userInfo){
-        return res.status(403).json({msg:"not logged in!"})
+        return res.redirect("/login")
     }
     User.findByPk(req.session.userInfo.id,{
         include:[Sneaker]
