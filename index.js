@@ -35,6 +35,10 @@ app.set('view engine', 'handlebars');
 
 const userRoutes = require("./controllers/userController")
 app.use("/api/users",userRoutes)
+const sneakerRoutes = require("./controllers/sneakerController")
+app.use("/api/sneakers",sneakerRoutes)
+const frontEndRoutes = require("./controllers/frontEndController")
+app.use(frontEndRoutes)
 
 app.get("/get-session",(req,res)=>{
     res.json(req.session);

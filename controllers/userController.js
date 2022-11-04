@@ -28,8 +28,12 @@ router.post("/login",(req,res)=>{
         if(!bcrypt.compareSync(req.body.password,foundUser.password)){
             return res.status(401).json({msg:"Invalid login credentials"})
         }
-        res.json(foundUser);
         //correct login
+        req.session.userInfo = {
+            email:foundUser.email,
+            id:foundUser.id
+        }
+        res.json(foundUser);
     })
 })
 
